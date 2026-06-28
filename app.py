@@ -8,7 +8,7 @@ df = pd.read_csv("processed_data.csv")
 df["date"]= pd.to_datetime(df["date"])
 df= df.sort_values("date")
 
-app.layout = html.Div([html.H1("Soul Foods Sales Dashboard",style={"textAlign":"center","color":"#10288C"}),dcc.RadioItems(id="region-filter",options=[{"label":"All","value":"all"},{"label":"North","value":"north"},{"label":"South","value":"south"},{"label":"East","value":"east"},{"label":"West","value":"west"}],value="all",inline=True,style={"textAlign":"center"}),dcc.Graph("filteredfig")],style={"padding":"30px","fontfamily":"Arial","background":"#EAF6AD"})
+app.layout = html.Div([html.H1("Soul Foods Sales Dashboard",id="header",style={"textAlign":"center","color":"#10288C"}),dcc.RadioItems(id="region-filter",options=[{"label":"All","value":"all"},{"label":"North","value":"north"},{"label":"South","value":"south"},{"label":"East","value":"east"},{"label":"West","value":"west"}],value="all",inline=True,style={"textAlign":"center"}),dcc.Graph(id="filteredfig")],style={"padding":"30px","fontfamily":"Arial","background":"#EAF6AD"})
 
 @callback(Output('filteredfig','figure'),Input('region-filter','value'))
 def update_graph(value):
